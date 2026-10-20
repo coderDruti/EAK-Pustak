@@ -5,7 +5,7 @@ export default function Hero() {
         {/* Brand: Logo & School Name */}
         <div className="flex items-center gap-3.5 shrink-0">
           <img
-            src="./src/assets/logo.jpg"
+            src="../src/assets/logo.jpg"
             alt="logo"
             className="w-12 h-12 rounded-full object-cover shadow-sm ring-2 ring-blue-600/10"
           />
