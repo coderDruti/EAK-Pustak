@@ -1099,7 +1099,7 @@ export default function MainContent({
         </div>
       </div>
 
-      {/* --- Frontend-Only Enquiry Modal --- */}
+      {/* --- Enquiry Modal --- */}
       {activeModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
           <div className="relative w-full max-w-lg bg-white rounded-3xl p-6 sm:p-8 shadow-2xl border border-gray-100 overflow-hidden">
