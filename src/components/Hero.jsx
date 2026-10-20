@@ -1,3 +1,4 @@
+import logo from '../assets/logo.jpg';
 export default function Hero() {
   return (
     <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm">
@@ -5,7 +6,7 @@ export default function Hero() {
         {/* Brand: Logo & School Name */}
         <div className="flex items-center gap-3.5 shrink-0">
           <img
-            src="../src/assets/logo.jpg"
+            src={logo}
             alt="logo"
             className="w-12 h-12 rounded-full object-cover shadow-sm ring-2 ring-blue-600/10"
           />
