@@ -7,6 +7,7 @@ export default function Hero() {
           <img
             src="src/assets/logo.jpg"
             alt="logo"
+            className="w-12 h-12 rounded-full object-cover shadow-sm ring-2 ring-blue-600/10"
           />
           <h2 className="text-xl sm:text-2xl font-black text-gray-900 tracking-tight">
             EAK International School
