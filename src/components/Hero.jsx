@@ -1,5 +1,22 @@
 import logo from '../assets/logo.jpg';
-export default function Hero() {
+
+export default function Hero({ onApplyClick, onEnquireClick }) {
+  const handleApply = () => {
+    if (onApplyClick) {
+      onApplyClick();
+    } else {
+      window.dispatchEvent(new CustomEvent('open-admission-modal', { detail: 'apply' }));
+    }
+  };
+
+  const handleEnquire = () => {
+    if (onEnquireClick) {
+      onEnquireClick();
+    } else {
+      window.dispatchEvent(new CustomEvent('open-admission-modal', { detail: 'call' }));
+    }
+  };
+
   return (
     <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-col md:flex-row items-center justify-between gap-4">
@@ -22,11 +39,19 @@ export default function Hero() {
 
         {/* Action Buttons */}
         <div className="flex items-center gap-3 shrink-0">
-          <button className="bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-xs sm:text-sm py-2.5 px-5 rounded-xl shadow-sm hover:shadow hover:-translate-y-0.5 transition-all cursor-pointer">
+          <button
+            type="button"
+            onClick={handleApply}
+            className="bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-xs sm:text-sm py-2.5 px-5 rounded-xl shadow-sm hover:shadow hover:-translate-y-0.5 transition-all cursor-pointer"
+          >
             APPLY NOW
           </button>
 
-          <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs sm:text-sm py-2.5 px-5 rounded-xl shadow-sm hover:shadow hover:-translate-y-0.5 transition-all cursor-pointer">
+          <button
+            type="button"
+            onClick={handleEnquire}
+            className="bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs sm:text-sm py-2.5 px-5 rounded-xl shadow-sm hover:shadow hover:-translate-y-0.5 transition-all cursor-pointer"
+          >
             ENQUIRE NOW
           </button>
         </div>
@@ -34,3 +59,4 @@ export default function Hero() {
     </header>
   )
 }
+

@@ -1,10 +1,29 @@
 // src/components/MainContent.jsx
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
-export default function MainContent() {
+export default function MainContent({
+  activeModal: propActiveModal,
+  setActiveModal: propSetActiveModal,
+  formSubmitted: propFormSubmitted,
+  setFormSubmitted: propSetFormSubmitted,
+} = {}) {
   const [openFaq, setOpenFaq] = useState(null)
-  const [activeModal, setActiveModal] = useState(null) // 'apply' | 'visit' | 'call' | null
-  const [formSubmitted, setFormSubmitted] = useState(false)
+  const [internalActiveModal, setInternalActiveModal] = useState(null) // 'apply' | 'visit' | 'call' | null
+  const [internalFormSubmitted, setInternalFormSubmitted] = useState(false)
+
+  const activeModal = propActiveModal !== undefined ? propActiveModal : internalActiveModal
+  const setActiveModal = propSetActiveModal || setInternalActiveModal
+  const formSubmitted = propFormSubmitted !== undefined ? propFormSubmitted : internalFormSubmitted
+  const setFormSubmitted = propSetFormSubmitted || setInternalFormSubmitted
+
+  useEffect(() => {
+    const handleOpen = (e) => {
+      setActiveModal(e.detail || 'apply')
+      setFormSubmitted(false)
+    }
+    window.addEventListener('open-admission-modal', handleOpen)
+    return () => window.removeEventListener('open-admission-modal', handleOpen)
+  }, [setActiveModal, setFormSubmitted])
 
 
   return (
